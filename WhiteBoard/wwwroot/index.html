@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="lib/signalr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+    <title>WhiteBoard</title>
+    <style>
+        canvas {
+            cursor: crosshair;
+            border: 1px solid #000000;
+        }
+    </style>
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/eligrey/FileSaver.js/c3e4a45021f205a790a2699f4af7a5b85fb63e09/demo/demo.css" />-->
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="500" onmouseout="clearMousePositions()"></canvas>
+    <div>
+        <form id="canvas-options">
+            <label>Filename: <input type="text" class="filename" id="canvas-filename" placeholder="doodle" />.png</label>
+            <input type="submit" value="Save" />
+            <input type="button" id="canvas-clear" value="Clear" />
+        </form>
+    </div>
+    <select id="color">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="white">White</option>
+    </select>
+    <div id="output"></div>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var canvasx = $(canvas).offset().left;
+        var canvasy = $(canvas).offset().top;
+        var last_mousex = last_mousey = 0;
+        var mousex = mousey = 0;
+        var mousedown = false;
+        var tooltype = 'draw';
+
+        $(canvas).on('mousedown', function (e) {
+            last_mousex = mousex = parseInt(e.clientX - canvasx);
+            last_mousey = mousey = parseInt(e.clientY - canvasy);
+            mousedown = true;
+        });
+
+        $(canvas).on('mouseup', function (e) {
+            mousedown = false;
+        });
+
+        var drawCanvas = function (prev_x, prev_y, x, y, clr) {
+            ctx.beginPath();
+            console.log("X: " + x + " Y: " + y);
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.strokeStyle = clr
+            ctx.lineWidth = 3;
+            ctx.moveTo(prev_x, prev_y);
+            ctx.lineTo(x, y);
+            ctx.lineJoin = ctx.lineCap = 'round';
+            ctx.stroke();
+        };
+
+        $(canvas).on('mousemove', function (e) {
+            mousex = parseInt(e.clientX - canvasx);
+            mousey = parseInt(e.clientY - canvasy);
+            var clr = $('select[id=color]').val()
+
+            if ((last_mousex > 0 && last_mousey > 0) && mousedown) {
+                drawCanvas(mousex, mousey, last_mousex, last_mousey, clr);
+                connection.invoke('draw', last_mousex, last_mousey, mousex, mousey, clr);
+            }
+            last_mousex = mousex;
+            last_mousey = mousey;
+
+            $('#output').html('current: ' + mousex + ', ' + mousey + '<br/>last: ' + last_mousex + ', ' + last_mousey + '<br/>mousedown: ' + mousedown);
+        });
+
+        var mouse_down = false;
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl('/draw')
+            .build();
+
+        connection.on('draw', function (prev_x, prev_y, x, y, clr) {
+            console.log("X: " + x + " Y: " + y);
+            drawCanvas(prev_x, prev_y, x, y, clr);
+        });
+        connection.start();
+
+        clearMousePositions = function () {
+            last_mousex = 0;
+            last_mousey = 0;
+        }
+
+    </script>
+    <script async="" src="lib/canvas-toBlob.js"></script>
+    <script async="" src="lib/FileSaver.min.js"></script>
+    <!--<script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
+    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>-->
+    <script async="" src="lib/demo.js"></script>
+    <!--<script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/demo/demo.min.js"></script>-->
+    <!--<script>
+        < ![CDATA[
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-4364432-1', 'auto');
+        ga('send', 'pageview');
+        ]]>
+    </script>-->
+</body>
+
+</html>
