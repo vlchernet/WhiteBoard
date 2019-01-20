@@ -137,7 +137,7 @@
 	r.addEventListener("submit", function (A) {
 		A.preventDefault();
 		f.toBlobHD(function (B) {
-			saveAs(B, (y.value || y.placeholder) + ".png")
+			saveAs(B, (y.value || y.placeholder) + ".jpg")
 		}, "image/png")
 	}, false);
 	t.addEventListener("submit", function (A) {

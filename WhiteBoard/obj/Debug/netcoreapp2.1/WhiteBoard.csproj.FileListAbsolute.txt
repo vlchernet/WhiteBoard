@@ -1,0 +1,14 @@
+D:\C#exercises\WhiteBoard\WhiteBoard\bin\Debug\netcoreapp2.1\WhiteBoard.deps.json
+D:\C#exercises\WhiteBoard\WhiteBoard\bin\Debug\netcoreapp2.1\WhiteBoard.runtimeconfig.json
+D:\C#exercises\WhiteBoard\WhiteBoard\bin\Debug\netcoreapp2.1\WhiteBoard.runtimeconfig.dev.json
+D:\C#exercises\WhiteBoard\WhiteBoard\bin\Debug\netcoreapp2.1\WhiteBoard.dll
+D:\C#exercises\WhiteBoard\WhiteBoard\bin\Debug\netcoreapp2.1\WhiteBoard.pdb
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.csprojAssemblyReference.cache
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.csproj.CoreCompileInputs.cache
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.RazorAssemblyInfo.cache
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.RazorAssemblyInfo.cs
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.AssemblyInfoInputs.cache
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.AssemblyInfo.cs
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.RazorTargetAssemblyInfo.cache
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.dll
+D:\C#exercises\WhiteBoard\WhiteBoard\obj\Debug\netcoreapp2.1\WhiteBoard.pdb
