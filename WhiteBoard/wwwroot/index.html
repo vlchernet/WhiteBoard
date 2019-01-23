@@ -140,6 +140,16 @@
             var context = $(canvas).getContext('2d');
             context.drawImage(img, 0, 0);
         }
+
+        onThumbClick = function (el) {
+            //var img = $(img).src;
+            var img = new Image();
+            //img = document.getElementsByClassName('thumb')[0];
+            img = el;
+            console.log(img);
+            var context = document.getElementById('canvas').getContext('2d');
+            context.drawImage(img, 0, 0);
+        }
     </script>
 
 </body>

@@ -6,7 +6,8 @@
     //var span = $(span);
 
     // Loop through the FileList and render image files as thumbnails.
-    for (var i = files.length - 1, f; f = files[i]; i++) {
+    //for (var i = files.length - 1, f; f = files[i]; i++) {
+    for (var i = 0, f; f = files[i]; i++) {
         //var f = files[0];
         // Only process image files.
         if (!f.type.match('image.*')) {
@@ -21,7 +22,7 @@
                 // Render thumbnail.
                 var span = document.createElement('span');
                 //var span = $('#pict');
-                span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                span.innerHTML = ['<img class="thumb" ondblclick=onThumbClick(this) src="', e.target.result,
                     '" title="', escape(theFile.name), '"/>'].join('');
                 document.getElementById('list').insertBefore(span, null);
                 //img.src = e.target.result;
