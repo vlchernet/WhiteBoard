@@ -42,8 +42,6 @@ function isFunction(x) {
   return typeof x === 'function';
 }
 
-
-
 var _isArray = void 0;
 if (Array.isArray) {
   _isArray = Array.isArray;

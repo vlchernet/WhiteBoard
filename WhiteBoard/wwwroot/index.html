@@ -30,9 +30,14 @@
             <input type="submit" value="Save" />
             <!-- <input type="button" id="canvas-clear" value="Clear" /> -->
         </form>
+
+        <input type="button" value="Send to Server" onclick="sendCanvasToServer()" /> <!--"canvasToImage()" />-->
+        <br />
+
+        <!-- <input type="button" id="canvas-clear" value="Clear" /> -->
         <!--<input id="input_file" type="file" multiple />-->
         <!--<input type="button" id="img-upload" value="Load" />
-        <div id="button"></div>-->
+    <div id="button"></div>-->
         <input type="file" id="files" name="files[]" multiple />
         <div id="list"><span id="pict"></span></div>
 
@@ -120,10 +125,12 @@
     <script async="" src="lib/canvas-toBlob.js"></script>
     <script async="" src="lib/FileSaver.min.js"></script>
     <script async="" src="lib/FileLoader.js"></script>
+    <script async="" src="lib/CanvasToImage.js"></script>
+    <script async="" src="lib/SendCanvasToServer.js"></script>
     <!--<script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
     <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
     <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>-->
-    <script async="" src="lib/demo.js"></script>
+    <!--<script async="" src="lib/demo.js"></script>-->
     <!--<script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/demo/demo.min.js"></script>-->
 
     <script>
@@ -134,7 +141,7 @@
         //    img.src = target.getAttribute('src');//target.result.src;//target.result;
         //    context.drawImage(img, 0, 0);
         //}
-        $('#thumb').onClick = function() {
+        $('#thumb').onClick = function () {
             var img = this.attribute('src');
             console.log(img);
             var context = $(canvas).getContext('2d');
@@ -146,7 +153,7 @@
             var img = new Image();
             //img = document.getElementsByClassName('thumb')[0];
             img = el;
-            //console.log(img);
+            console.log(img);
             var context = document.getElementById('canvas').getContext('2d');
             context.drawImage(img, 0, 0);
         }

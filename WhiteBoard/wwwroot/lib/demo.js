@@ -134,28 +134,28 @@
 	}, false);
 	f.addEventListener("mouseup", c, false);
 	f.addEventListener("mouseout", c, false); */
-	r.addEventListener("submit", function (A) {
-		A.preventDefault();
-		f.toBlobHD(function (B) {
-			saveAs(B, (y.value || y.placeholder) + ".jpg")
-		}, "image/png")
-	}, false);
-	t.addEventListener("submit", function (A) {
-		A.preventDefault();
-		var B = x();
-		saveAs(new B([q.value || q.placeholder], {
-				type: "text/plain;charset=" + s.characterSet
-			}), (h.value || h.placeholder) + ".txt")
-	}, false);
-	e.addEventListener("submit", function (B) {
-		B.preventDefault();
-		var D = x(),
-		A = new XMLSerializer,
-		C = k(m);
-		saveAs(new D([A.serializeToString(C)], {
-				type: "text/plain;charset=" + s.characterSet
-			}), (i.value || i.placeholder) + ".xhtml")
-	}, false);
+	//r.addEventListener("submit", function (A) {
+	//	A.preventDefault();
+	//	f.toBlobHD(function (B) {
+	//		saveAs(B, (y.value || y.placeholder) + ".jpg")
+	//	}, "image/png")
+	//}, false);
+	//t.addEventListener("submit", function (A) {
+	//	A.preventDefault();
+	//	var B = x();
+	//	saveAs(new B([q.value || q.placeholder], {
+	//			type: "text/plain;charset=" + s.characterSet
+	//		}), (h.value || h.placeholder) + ".txt")
+	//}, false);
+	//e.addEventListener("submit", function (B) {
+	//	B.preventDefault();
+	//	var D = x(),
+	//	A = new XMLSerializer,
+	//	C = k(m);
+	//	saveAs(new D([A.serializeToString(C)], {
+	//			type: "text/plain;charset=" + s.characterSet
+	//		}), (i.value || i.placeholder) + ".xhtml")
+	//}, false);
 	n.addEventListener("unload", function () {
 		b.x_points = JSON.stringify(a);
 		b.y_points = JSON.stringify(o);

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace WhiteBoard.Hubs
@@ -10,5 +9,6 @@ namespace WhiteBoard.Hubs
         {
             return Clients.Others.SendAsync("draw", prevX, prevY, currentX, currentY, color);
         }
+
     }
 }

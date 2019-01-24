@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ApiController.HttpProxy" Version="1.1.0" />
+    <PackageReference Include="DotNetDesign.Substrate.WebApi" Version="0.9.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.Internal" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
 </Project>
